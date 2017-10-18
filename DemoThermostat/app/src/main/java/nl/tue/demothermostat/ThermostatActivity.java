@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class ThermostatActivity extends Activity {
 
-    int vtemp = 21;
+    int vtemp = 22;
     TextView temp;
     SeekBar seekBar;
     @Override
@@ -26,6 +26,7 @@ public class ThermostatActivity extends Activity {
 
         ImageView bMinus = (ImageView)findViewById(R.id.bMinus);
         temp = (TextView)findViewById(R.id.temp);
+        temp.setText(vtemp + " \u2103");
         Button weekOverview = (Button)findViewById(R.id.week_overview);
 
         weekOverview.setOnClickListener(new View.OnClickListener() {

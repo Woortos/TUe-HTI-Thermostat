@@ -16,8 +16,8 @@
             android:id="@+id/bPlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/bMinus"
-            android:layout_alignStart="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_below="@+id/textView2"
             android:src="@drawable/add_button" />
 
         <TextView
@@ -27,7 +27,6 @@
             android:layout_alignBottom="@+id/bMinus"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="19dp"
-            android:text="21 &#x2103;"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffff"
             android:textSize="30dp" />
@@ -36,10 +35,11 @@
             android:id="@+id/bMinus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/textView2"
-            android:layout_below="@+id/textView2"
             android:layout_marginLeft="52dp"
-            android:src="@drawable/minus_button" />
+            android:src="@drawable/minus_button"
+            android:layout_below="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -83,7 +83,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="52dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="23dp"
             android:text="Testing Web Service" />
 
         <TextClock
@@ -94,6 +94,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/white" />
+
     </RelativeLayout>
 
 </LinearLayout>
