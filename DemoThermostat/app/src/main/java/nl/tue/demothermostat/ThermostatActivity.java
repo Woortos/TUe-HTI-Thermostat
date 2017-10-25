@@ -23,7 +23,7 @@ public class ThermostatActivity extends Activity {
 
 
         ImageView bPlus = (ImageView)findViewById(R.id.bPlus);
-        bPlus.setImageResource(R.drawable.add_button);
+        bPlus.setImageResource(R.drawable.doubleup);
 
 
         ImageView bMinus = (ImageView)findViewById(R.id.bMinus);
@@ -48,30 +48,12 @@ public class ThermostatActivity extends Activity {
             }
         });
 
-        seekBar = (SeekBar)findViewById(R.id.seekBar);
-        seekBar.setProgress(vtemp);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                temp.setText(i + " \u2103");
-            }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
         bPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vtemp++;
                 temp.setText(vtemp + " \u2103");
-                seekBar.setProgress(vtemp);
             }
         });
         bMinus.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +61,6 @@ public class ThermostatActivity extends Activity {
             public void onClick(View view) {
                 vtemp--;
                 temp.setText(vtemp + " \u2103");
-                seekBar.setProgress(vtemp);
             }
         });
     }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -5,85 +6,246 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="#ffff00"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".ThermostatActivity">
+    android:background="#eeeeee"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".ThermostatActivity"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="30dp"
-        android:orientation="horizontal">
+        android:layout_height="300dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="0.10"
+        android:background="@drawable/rectangle_bg"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <ImageView
-            android:id="@+id/bPlus"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignEnd="@+id/textView2"
-            android:layout_below="@+id/textClock"
-            android:src="@drawable/doubleup"
-            android:layout_weight="1.97" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/temp"
-            android:layout_width="157dp"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Current"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_marginTop="0dp"
+                android:layout_weight="1.43"
+                android:text="21 &#x2103;"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:textSize="80dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
 
-            android:text="21 &#x2103;"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#000000"
-            android:textSize="30dp" />
+            <ImageView
+                android:id="@+id/bMinus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/textView2"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/temp"
+                android:src="@drawable/doubledown" />
 
-        <ImageView
-            android:id="@+id/bMinus"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/textView2"
-            android:layout_toEndOf="@+id/temp"
-            android:src="@drawable/doubledown" />
+            <TextView
+                android:id="@+id/temp"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+
+                android:layout_marginTop="0dp"
+                android:layout_weight="0.88"
+                android:text="21 &#x2103;"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:textSize="50dp" />
+
+            <ImageView
+                android:id="@+id/bPlus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignEnd="@+id/textView2"
+                android:layout_below="@+id/textClock"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:src="@drawable/doubleup" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="258dp">
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_weight="0.16"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textClock"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-            android:text="Current Temperature"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#000000"
-            android:textSize="30dp"
-            android:textAlignment="center"/>
-
-        <SeekBar
-            android:id="@+id/seekBar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:indeterminate="false"
-            android:max="30"
-            android:progressTint="#336699"
-            android:thumbTint="#336699"
-            android:layout_below="@+id/temp"
-            android:layout_alignParentStart="true" />
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-        <TextClock
-            android:id="@+id/textClock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/Day"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_weight="0"
+                android:text="Day"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:textSize="30dp" />
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@drawable/rectangle_bg"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp">
+
+                <ImageView
+                    android:id="@+id/bMinus"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toEndOf="@+id/temp"
+                    android:layout_weight="1"
+                    android:src="@drawable/doubledown" />
+
+                <TextView
+                    android:id="@+id/temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="21 &#x2103;"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000000"
+                    android:textSize="30dp" />
+
+                <ImageView
+                    android:id="@+id/bPlus"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignEnd="@+id/textView2"
+                    android:layout_below="@+id/textClock"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/doubleup" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/Night"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_weight="0"
+                android:text="Night"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_bg"
+                android:orientation="horizontal"
+                android:weightSum="0">
+
+                <ImageView
+                    android:id="@+id/bMinus"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toEndOf="@+id/temp"
+                    android:layout_weight="1"
+                    android:src="@drawable/doubledown" />
+
+                <TextView
+                    android:id="@+id/temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="21 &#x2103;"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000000"
+                    android:textSize="30dp" />
+
+                <ImageView
+                    android:id="@+id/bPlus"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignEnd="@+id/textView2"
+                    android:layout_below="@+id/textClock"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/doubleup" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/week_overview"
