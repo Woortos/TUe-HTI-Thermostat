@@ -95,6 +95,17 @@
 
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/temp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="15dp"
+            android:text="21 &#x2103;"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textSize="50dp" />
     </LinearLayout>
 
     <LinearLayout
