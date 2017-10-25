@@ -15,19 +15,18 @@ public class ThermostatActivity extends Activity {
 
     int vtemp = 22;
     TextView temp;
-    SeekBar seekBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thermostat);
 
 
-        ImageView bPlus = (ImageView)findViewById(R.id.bPlus);
+        ImageView bPlus = (ImageView)findViewById(R.id.overrideup);
         bPlus.setImageResource(R.drawable.doubleup);
 
 
-        ImageView bMinus = (ImageView)findViewById(R.id.bMinus);
-        temp = (TextView)findViewById(R.id.temp);
+        ImageView bMinus = (ImageView)findViewById(R.id.overridedown);
+        temp = (TextView)findViewById(R.id.tempoverride);
         temp.setText(vtemp + " \u2103");
         Button weekOverview = (Button)findViewById(R.id.week_overview);
 
