@@ -30,6 +30,7 @@ public class ThermostatActivity extends Activity {
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/3";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
+        //refresh current temperature
         refresh = new Runnable() {
             public void run() {
                 // Do something
@@ -67,18 +68,13 @@ public class ThermostatActivity extends Activity {
         currentTemp = (TextView) findViewById(R.id.currenttemp);
 
 
-
         weekOverview.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);
                 startActivity(intent);
-
             }
-    });
-
-
+        });
 
 
         Button testingWS = (Button) findViewById(R.id.testing_ws);
@@ -95,27 +91,36 @@ public class ThermostatActivity extends Activity {
         bPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vtemp++;
+                if (vtemp < 30){
+                    View b = findViewById(R.id.overrideup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.overridedown);
+                    c.setVisibility(View.VISIBLE);
+                    vtemp++;
+                } else {
+                    View b = findViewById(R.id.overrideup);
+                    b.setVisibility(View.INVISIBLE);
+                }
 
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            HeatingSystem.put("targetTemperature", Integer.toString(vtemp));
-                            overriddenTemp = HeatingSystem.get("targetTemperature");
-                            temp.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    temp.setText(overriddenTemp);
-                                }
-                            });
-                            tempCurrent = HeatingSystem.get("currentTemperature");
-                            currentTemp.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    currentTemp.setText(tempCurrent);
-                                }
-                            });
+                                HeatingSystem.put("targetTemperature", Integer.toString(vtemp));
+                                overriddenTemp = HeatingSystem.get("targetTemperature");
+                                temp.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        temp.setText(overriddenTemp);
+                                    }
+                                });
+                                tempCurrent = HeatingSystem.get("currentTemperature");
+                                currentTemp.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        currentTemp.setText(tempCurrent);
+                                    }
+                                });
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
                         }
@@ -123,10 +128,20 @@ public class ThermostatActivity extends Activity {
                 }).start();
             }
         });
+
         bMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vtemp--;
+                if (vtemp > 5){
+                    View b = findViewById(R.id.overrideup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.overridedown);
+                    c.setVisibility(View.VISIBLE);
+                    vtemp--;
+                } else {
+                    View b = findViewById(R.id.overridedown);
+                    b.setVisibility(View.INVISIBLE);
+                }
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
