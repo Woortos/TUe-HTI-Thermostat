@@ -23,17 +23,19 @@
         android:paddingRight="3dp"
         android:paddingTop="3dp">
 
-        <ImageView
-            android:id="@+id/bar"
+        <ImageButton
+            android:id="@+id/week_overview"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/calendar" />
 
-        <ImageView
-            android:id="@+id/calendar"
+        <ImageButton
+            android:id="@+id/bar"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/bars" />
     </RelativeLayout>
 
@@ -275,13 +277,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/week_overview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Week Overview" />
 
     <Button
         android:id="@+id/testing_ws"

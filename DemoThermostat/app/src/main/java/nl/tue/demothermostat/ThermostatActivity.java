@@ -3,13 +3,12 @@ package nl.tue.demothermostat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewDebug;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.thermostatapp.util.HeatingSystem;
 import org.thermostatapp.util.WeekProgram;
@@ -20,10 +19,40 @@ public class ThermostatActivity extends Activity {
     String overriddenTemp, tempCurrent;
     TextView currentTemp;
     TextView temp;
+    Handler handler = new Handler();
+    Runnable refresh;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thermostat);
+
+        HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/3";
+        HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
+
+        refresh = new Runnable() {
+            public void run() {
+                // Do something
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            tempCurrent = HeatingSystem.get("currentTemperature");
+                            currentTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    currentTemp.setText(tempCurrent);
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+                handler.postDelayed(refresh, 100);
+            }
+        };
+        handler.post(refresh);
 
 
         ImageView bPlus = (ImageView) findViewById(R.id.overrideup);
@@ -33,7 +62,7 @@ public class ThermostatActivity extends Activity {
         ImageView bMinus = (ImageView) findViewById(R.id.overridedown);
         temp = (TextView) findViewById(R.id.tempoverride);
         temp.setText(vtemp + " \u2103");
-        Button weekOverview = (Button) findViewById(R.id.week_overview);
+        ImageButton weekOverview = (ImageButton) findViewById(R.id.week_overview);
 
         currentTemp = (TextView) findViewById(R.id.currenttemp);
 
@@ -72,7 +101,6 @@ public class ThermostatActivity extends Activity {
                     @Override
                     public void run() {
                         try {
-
                             HeatingSystem.put("targetTemperature", Integer.toString(vtemp));
                             overriddenTemp = HeatingSystem.get("targetTemperature");
                             temp.post(new Runnable() {
