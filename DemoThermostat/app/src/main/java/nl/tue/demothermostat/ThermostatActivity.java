@@ -49,7 +49,7 @@ public class ThermostatActivity extends Activity {
                         }
                     }
                 }).start();
-                handler.postDelayed(refresh, 100);
+                handler.postDelayed(refresh, 500);
             }
         };
         handler.post(refresh);
