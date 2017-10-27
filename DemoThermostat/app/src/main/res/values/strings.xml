@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">HTIThermostat2000</string>
     <string name="temp">21</string>
+    <string name="monday">Monday</string>
+    <string name="timeindic">00:00</string>
 </resources>
