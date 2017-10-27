@@ -61,7 +61,7 @@ public class ThermostatActivity extends Activity {
                             currentTemp.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    currentTemp.setText(tempCurrent);
+                                    currentTemp.setText(tempCurrent + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
@@ -93,9 +93,9 @@ public class ThermostatActivity extends Activity {
                         @Override
                         public void run() {
 
-                            dayTempText.setText(dayTempString);
-                            nightTempText.setText(nightTempString);
-                            temp.setText(dayTempString);
+                            dayTempText.setText(dayTempString + " \u2103");
+                            nightTempText.setText(nightTempString + " \u2103");
+                            temp.setText(dayTempString+ " \u2103");
 
                         }
                     });
@@ -144,7 +144,7 @@ public class ThermostatActivity extends Activity {
                                 temp.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        temp.setText(overriddenTemp);
+                                        temp.setText(overriddenTemp + " \u2103");
                                     }
                                 });
                         } catch (Exception e) {
@@ -177,7 +177,7 @@ public class ThermostatActivity extends Activity {
                             temp.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    temp.setText(overriddenTemp);
+                                    temp.setText(overriddenTemp + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
@@ -211,7 +211,7 @@ public class ThermostatActivity extends Activity {
                             dayTempText.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    dayTempText.setText(dayTempString);
+                                    dayTempText.setText(dayTempString + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
@@ -245,7 +245,7 @@ public class ThermostatActivity extends Activity {
                             dayTempText.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    dayTempText.setText(dayTempString);
+                                    dayTempText.setText(dayTempString + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
@@ -280,7 +280,7 @@ public class ThermostatActivity extends Activity {
                             nightTempText.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    nightTempText.setText(nightTempString);
+                                    nightTempText.setText(nightTempString + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
@@ -314,7 +314,7 @@ public class ThermostatActivity extends Activity {
                             nightTempText.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    nightTempText.setText(nightTempString);
+                                    nightTempText.setText(nightTempString + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
