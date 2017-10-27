@@ -82,7 +82,12 @@ public class ThermostatActivity extends Activity {
                 try {
                     dayTempString = HeatingSystem.get("dayTemperature");
                     nightTempString = HeatingSystem.get("nightTemperature");
-
+                    // Get the week program
+                    WeekProgram wpg = HeatingSystem.getWeekProgram();
+                    // Set the week program to default
+                    wpg.setDefault();
+                    //Upload the updated program
+                    HeatingSystem.setWeekProgram(wpg);
                     dayTempText.post(new Runnable() {
 
                         @Override
@@ -111,17 +116,6 @@ public class ThermostatActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);
-                startActivity(intent);
-            }
-        });
-
-
-        Button testingWS = (Button) findViewById(R.id.testing_ws);
-
-        testingWS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), TestingWS.class);
                 startActivity(intent);
             }
         });
