@@ -15,10 +15,14 @@ import org.thermostatapp.util.WeekProgram;
 
 public class ThermostatActivity extends Activity {
 
-    int vtemp = 22;
-    String overriddenTemp, tempCurrent;
+    double vtemp = 22.0;
+    double dayTemp = 22.0;
+    double nightTemp = 16.0;
+    String overriddenTemp, tempCurrent, dayTempString, nightTempString;
     TextView currentTemp;
     TextView temp;
+    TextView dayTempText;
+    TextView nightTempText;
     Handler handler = new Handler();
     Runnable refresh;
 
@@ -29,6 +33,21 @@ public class ThermostatActivity extends Activity {
 
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/3";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
+
+        ImageView bPlus = (ImageView) findViewById(R.id.overrideup);
+        ImageView bMinus = (ImageView) findViewById(R.id.overridedown);
+        ImageView dayPlus = (ImageView) findViewById(R.id.dayup);
+        ImageView dayMinus = (ImageView) findViewById(R.id.daydown);
+        ImageView nightPlus = (ImageView) findViewById(R.id.nightup);
+        ImageView nightMinus = (ImageView) findViewById(R.id.nightdown);
+
+
+        currentTemp = (TextView) findViewById(R.id.currenttemp);
+        temp = (TextView) findViewById(R.id.tempoverride);
+        dayTempText = (TextView) findViewById(R.id.tempday);
+        nightTempText = (TextView) findViewById(R.id.tempnight);
+
+
 
         //refresh current temperature
         refresh = new Runnable() {
@@ -55,34 +74,48 @@ public class ThermostatActivity extends Activity {
         };
         handler.post(refresh);
 
+        //Upon starting the app, retrieve the correct temps from the server
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-        ImageView bPlus = (ImageView) findViewById(R.id.overrideup);
-        bPlus.setImageResource(R.drawable.doubleup);
+                try {
+                    dayTempString = HeatingSystem.get("dayTemperature");
+                    nightTempString = HeatingSystem.get("nightTemperature");
+                    // Get the week program
+                    WeekProgram wpg = HeatingSystem.getWeekProgram();
+                    // Set the week program to default
+                    wpg.setDefault();
+                    //Upload the updated program
+                    HeatingSystem.setWeekProgram(wpg);
+                    dayTempText.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            dayTempText.setText(dayTempString);
+                            nightTempText.setText(nightTempString);
+                            temp.setText(dayTempString);
+
+                        }
+                    });
+                } catch (Exception e) {
+                    System.err.println("Error from getdata " + e);
+                }
+            }
+        }).start();
 
 
-        ImageView bMinus = (ImageView) findViewById(R.id.overridedown);
-        temp = (TextView) findViewById(R.id.tempoverride);
-        temp.setText(vtemp + " \u2103");
+
+
+
+
         ImageButton weekOverview = (ImageButton) findViewById(R.id.week_overview);
-
-        currentTemp = (TextView) findViewById(R.id.currenttemp);
-
 
         weekOverview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);
-                startActivity(intent);
-            }
-        });
-
-
-        Button testingWS = (Button) findViewById(R.id.testing_ws);
-
-        testingWS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), TestingWS.class);
                 startActivity(intent);
             }
         });
@@ -106,19 +139,12 @@ public class ThermostatActivity extends Activity {
                     @Override
                     public void run() {
                         try {
-                                HeatingSystem.put("targetTemperature", Integer.toString(vtemp));
+                                HeatingSystem.put("targetTemperature", Double.toString(vtemp));
                                 overriddenTemp = HeatingSystem.get("targetTemperature");
                                 temp.post(new Runnable() {
                                     @Override
                                     public void run() {
                                         temp.setText(overriddenTemp);
-                                    }
-                                });
-                                tempCurrent = HeatingSystem.get("currentTemperature");
-                                currentTemp.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        currentTemp.setText(tempCurrent);
                                     }
                                 });
                         } catch (Exception e) {
@@ -146,19 +172,12 @@ public class ThermostatActivity extends Activity {
                     @Override
                     public void run() {
                         try {
-                            HeatingSystem.put("targetTemperature", Integer.toString(vtemp));
+                            HeatingSystem.put("targetTemperature", Double.toString(vtemp));
                             overriddenTemp = HeatingSystem.get("targetTemperature");
                             temp.post(new Runnable() {
                                 @Override
                                 public void run() {
                                     temp.setText(overriddenTemp);
-                                }
-                            });
-                            tempCurrent = HeatingSystem.get("currentTemperature");
-                            currentTemp.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    currentTemp.setText(tempCurrent);
                                 }
                             });
                         } catch (Exception e) {
@@ -168,5 +187,145 @@ public class ThermostatActivity extends Activity {
                 }).start();
             }
         });
+
+        dayPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dayTemp < 30){
+                    View b = findViewById(R.id.dayup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.daydown);
+                    c.setVisibility(View.VISIBLE);
+                    dayTemp++;
+                } else {
+                    View b = findViewById(R.id.dayup);
+                    b.setVisibility(View.INVISIBLE);
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HeatingSystem.put("dayTemperature", Double.toString(dayTemp));
+                            dayTempString = HeatingSystem.get("dayTemperature");
+                            dayTempText.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dayTempText.setText(dayTempString);
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+            }
+        });
+
+        dayMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dayTemp > 5){
+                    View b = findViewById(R.id.dayup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.daydown);
+                    c.setVisibility(View.VISIBLE);
+                    dayTemp--;
+                } else {
+                    View b = findViewById(R.id.daydown);
+                    b.setVisibility(View.INVISIBLE);
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HeatingSystem.put("dayTemperature", Double.toString(dayTemp));
+                            dayTempString = HeatingSystem.get("dayTemperature");
+                            dayTempText.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dayTempText.setText(dayTempString);
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+            }
+        });
+
+
+        nightPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (nightTemp < 30){
+                    View b = findViewById(R.id.nightup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.nightdown);
+                    c.setVisibility(View.VISIBLE);
+                    nightTemp++;
+                } else {
+                    View b = findViewById(R.id.nightup);
+                    b.setVisibility(View.INVISIBLE);
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HeatingSystem.put("nightTemperature", Double.toString(nightTemp));
+                            nightTempString = HeatingSystem.get("nightTemperature");
+                            nightTempText.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nightTempText.setText(nightTempString);
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+            }
+        });
+
+        nightMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (nightTemp > 5){
+                    View b = findViewById(R.id.nightup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.nightdown);
+                    c.setVisibility(View.VISIBLE);
+                    nightTemp--;
+                } else {
+                    View b = findViewById(R.id.nightdown);
+                    b.setVisibility(View.INVISIBLE);
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HeatingSystem.put("nightTemperature", Double.toString(nightTemp));
+                            nightTempString = HeatingSystem.get("nightTemperature");
+                            nightTempText.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nightTempText.setText(nightTempString);
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+            }
+        });
+
     }
+
+
 }
