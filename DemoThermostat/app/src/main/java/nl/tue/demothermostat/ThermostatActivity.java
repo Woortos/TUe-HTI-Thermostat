@@ -106,16 +106,23 @@ public class ThermostatActivity extends Activity {
         }).start();
 
 
-
-
-
-
         ImageButton weekOverview = (ImageButton) findViewById(R.id.week_overview);
 
         weekOverview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), WeekOverview.class);
+                startActivity(intent);
+            }
+        });
+
+
+        ImageButton bar = (ImageButton) findViewById(R.id.bar);
+
+        bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ScheduleSetting.class);
                 startActivity(intent);
             }
         });

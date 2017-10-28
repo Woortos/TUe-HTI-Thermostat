@@ -1,9 +1,9 @@
 package nl.tue.demothermostat;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class ScheduleSetting extends AppCompatActivity {
+public class ScheduleSetting extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

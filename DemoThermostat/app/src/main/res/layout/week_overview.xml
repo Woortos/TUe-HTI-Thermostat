@@ -22,109 +22,121 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/schedule"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="26dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/schedule"
+            <ImageView
+                android:id="@+id/swmon1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="3">
+                android:layout_height="80dp"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
 
-                <ImageView
-                    android:id="@+id/swmon1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard"
-                    />
-
-                <ImageView
-                    android:id="@+id/swmon2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon9"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <ImageView
-                    android:id="@+id/swmon10"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/abc_input_method_navigation_guard" />
-
-                <TextView
-                    android:id="@+id/txtmonday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:text="@string/monday"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/timeindic"
+            <ImageView
+                android:id="@+id/swmon2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/schedule"
-                android:text="@string/timeindic"
-                android:textSize="12sp"
-                android:layout_weight="1"/>
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
 
-            <TextView
-                android:id="@+id/timeindic2"
+            <ImageView
+                android:id="@+id/swmon3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/schedule"
-                android:layout_weight="3"
-                android:text="@string/timeindic"
-                android:textSize="12sp" />
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtmonday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="@string/monday"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/timeindic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/timeindic2"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
@@ -135,6 +147,122 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="26dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/swmon1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txttuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="@string/tuesday"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/timeindic5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/timeindic2"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -144,6 +272,122 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="26dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/swmon1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtmonday3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="@string/monday"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/timeindic8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/timeindic2"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -153,6 +397,122 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="26dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/swmon1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtmonday4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="@string/monday"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/timeindic11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/timeindic2"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -162,6 +522,122 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="26dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/swmon1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtmonday5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="@string/monday"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/timeindic14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/timeindic2"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -171,6 +647,122 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="26dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/swmon1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtmonday6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="@string/monday"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/timeindic17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/timeindic2"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -180,6 +772,122 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="26dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/swmon1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/background_floating_material_light" />
+
+            <ImageView
+                android:id="@+id/swmon4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+            <ImageView
+                android:id="@+id/swmon10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@color/abc_input_method_navigation_guard" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtmonday7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="@string/monday"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/timeindic20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/timeindic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/timeindic22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/timeindic2"
+            android:textSize="12sp" />
     </RelativeLayout>
 
 </LinearLayout>

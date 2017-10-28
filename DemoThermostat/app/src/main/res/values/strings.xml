@@ -2,5 +2,8 @@
     <string name="app_name">HTIThermostat2000</string>
     <string name="temp">21</string>
     <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
     <string name="timeindic">00:00</string>
+    <string name="timeindic2">12:00</string>
+    <string name="post">Post</string>
 </resources>
