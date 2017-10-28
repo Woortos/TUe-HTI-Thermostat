@@ -46,8 +46,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_gravity="center_vertical"
         android:background="@drawable/rectangle_bg"
         android:orientation="vertical"
         android:weightSum="1">
@@ -87,19 +86,30 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="30dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp">
 
             <ImageView
                 android:id="@+id/overridedown"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:src="@drawable/doubledown" />
+
+            <ImageView
+                android:id="@+id/overridedown2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
                 android:src="@drawable/doubledown" />
 
             <LinearLayout
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -107,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.88"
-                    android:text="Goal"
+                    android:text="@string/goal"
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#000000"
@@ -128,12 +138,19 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/overrideup2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/doubleup" />
+
+            <ImageView
                 android:id="@+id/overrideup"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:src="@drawable/doubleup" />
 
         </LinearLayout>
@@ -144,7 +161,7 @@
         android:id="@+id/daynighttemp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
+        android:layout_gravity="center_vertical"
         android:layout_weight="0.16"
         android:orientation="vertical">
 
@@ -161,7 +178,7 @@
                 android:layout_marginEnd="30dp"
                 android:layout_weight="0"
                 android:text="Day"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000000"
                 android:textSize="30sp" />
@@ -230,7 +247,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_weight="0"
                 android:text="Night"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000000"
                 android:textSize="30dp" />
@@ -293,8 +310,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/vacationmode"
-            android:checked="true"/>
+            android:checked="true"
+            android:text="@string/vacationmode" />
     </LinearLayout>
 
 </LinearLayout>

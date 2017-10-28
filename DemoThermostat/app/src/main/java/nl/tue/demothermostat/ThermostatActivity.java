@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,14 +17,15 @@ import org.thermostatapp.util.WeekProgram;
 
 public class ThermostatActivity extends Activity {
 
-    double vtemp = 22.0;
+    double vtemp = 20.0;
     double dayTemp = 22.0;
     double nightTemp = 16.0;
-    String overriddenTemp, tempCurrent, dayTempString, nightTempString, vacationModeString;
+    String targetTempStr, tempCurrent, dayTempString, nightTempString,  vacationModeString;
     TextView currentTemp;
-    TextView temp;
+    TextView targetTemp;
     TextView dayTempText;
     TextView nightTempText;
+    Switch vacationMode;
     Handler handler = new Handler();
     Runnable refresh;
 
@@ -36,16 +38,18 @@ public class ThermostatActivity extends Activity {
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
         ImageView bPlus = (ImageView) findViewById(R.id.overrideup);
+        ImageView bPlus2 = (ImageView) findViewById(R.id.overrideup2);
         ImageView bMinus = (ImageView) findViewById(R.id.overridedown);
+        ImageView bMinus2 = (ImageView) findViewById(R.id.overridedown2);
         ImageView dayPlus = (ImageView) findViewById(R.id.dayup);
         ImageView dayMinus = (ImageView) findViewById(R.id.daydown);
         ImageView nightPlus = (ImageView) findViewById(R.id.nightup);
         ImageView nightMinus = (ImageView) findViewById(R.id.nightdown);
 
-        final Switch vacationMode = (Switch) findViewById(R.id.vacationmode);
+        vacationMode = (Switch) findViewById(R.id.vacationmode);
 
         currentTemp = (TextView) findViewById(R.id.currenttemp);
-        temp = (TextView) findViewById(R.id.tempoverride);
+        targetTemp = (TextView) findViewById(R.id.tempoverride);
         dayTempText = (TextView) findViewById(R.id.tempday);
         nightTempText = (TextView) findViewById(R.id.tempnight);
 
@@ -83,31 +87,47 @@ public class ThermostatActivity extends Activity {
                 try {
                     dayTempString = HeatingSystem.get("dayTemperature");
                     nightTempString = HeatingSystem.get("nightTemperature");
+                    targetTempStr = HeatingSystem.get("targetTemperature");
                     vacationModeString = HeatingSystem.get("weekProgramState");
+                    System.out.println(vacationModeString);
 
                     // Get the week program
-                    WeekProgram wpg = HeatingSystem.getWeekProgram();
+                   /* WeekProgram wpg = HeatingSystem.getWeekProgram();
                     // Set the week program to default
                     wpg.setDefault();
                     //Upload the updated program
-                    HeatingSystem.setWeekProgram(wpg);
-                    dayTempText.post(new Runnable() {
+                    HeatingSystem.setWeekProgram(wpg);*/
 
+                    targetTemp.post(new Runnable() {
                         @Override
                         public void run() {
-
+                            targetTemp.setText(targetTempStr+ " \u2103");
+                        }
+                    });
+                    nightTempText.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            nightTempText.setText(nightTempString+ " \u2103");
+                        }
+                    });
+                    dayTempText.post(new Runnable() {
+                        @Override
+                        public void run() {
                             dayTempText.setText(dayTempString + " \u2103");
-                            nightTempText.setText(nightTempString + " \u2103");
-                            temp.setText(dayTempString+ " \u2103");
-
-                            if (vacationModeString == "on"){
-                                vacationMode.setChecked(true);
-                            } else {
-                                vacationMode.setChecked(false);
-                            }
 
                         }
                     });
+                    vacationMode.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (vacationModeString.equals("on")){
+                                vacationMode.setChecked(false);
+                            } else {
+                                vacationMode.setChecked(true);
+                            }
+                        }
+                    });
+
                 } catch (Exception e) {
                     System.err.println("Error from getdata " + e);
                 }
@@ -156,11 +176,11 @@ public class ThermostatActivity extends Activity {
                     public void run() {
                         try {
                                 HeatingSystem.put("targetTemperature", Double.toString(vtemp));
-                                overriddenTemp = HeatingSystem.get("targetTemperature");
-                                temp.post(new Runnable() {
+                                targetTempStr = HeatingSystem.get("targetTemperature");
+                                targetTemp.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        temp.setText(overriddenTemp + " \u2103");
+                                        targetTemp.setText(targetTempStr + " \u2103");
                                     }
                                 });
                         } catch (Exception e) {
@@ -170,6 +190,41 @@ public class ThermostatActivity extends Activity {
                 }).start();
             }
         });
+
+        bPlus2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (vtemp < 30){
+                    View b = findViewById(R.id.overrideup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.overridedown);
+                    c.setVisibility(View.VISIBLE);
+                    vtemp = vtemp + 0.1;
+                } else {
+                    View b = findViewById(R.id.overrideup);
+                    b.setVisibility(View.INVISIBLE);
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HeatingSystem.put("targetTemperature", Double.toString(vtemp));
+                            targetTempStr = HeatingSystem.get("targetTemperature");
+                            targetTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    targetTemp.setText(targetTempStr + " \u2103");
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+            }
+        });
+
 
         bMinus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,11 +244,44 @@ public class ThermostatActivity extends Activity {
                     public void run() {
                         try {
                             HeatingSystem.put("targetTemperature", Double.toString(vtemp));
-                            overriddenTemp = HeatingSystem.get("targetTemperature");
-                            temp.post(new Runnable() {
+                            targetTempStr = HeatingSystem.get("targetTemperature");
+                            targetTemp.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    temp.setText(overriddenTemp + " \u2103");
+                                    targetTemp.setText(targetTempStr + " \u2103");
+                                }
+                            });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+            }
+        });
+
+        bMinus2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (vtemp > 5){
+                    View b = findViewById(R.id.overrideup);
+                    b.setVisibility(View.VISIBLE);
+                    View c = findViewById(R.id.overridedown);
+                    c.setVisibility(View.VISIBLE);
+                    vtemp = vtemp - 0.1;
+                } else {
+                    View b = findViewById(R.id.overridedown);
+                    b.setVisibility(View.INVISIBLE);
+                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            HeatingSystem.put("targetTemperature", Double.toString(vtemp));
+                            targetTempStr = HeatingSystem.get("targetTemperature");
+                            targetTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    targetTemp.setText(targetTempStr + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
@@ -333,6 +421,26 @@ public class ThermostatActivity extends Activity {
                                     nightTempText.setText(nightTempString + " \u2103");
                                 }
                             });
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+            }
+        });
+
+        vacationMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (isChecked){
+                            vacationModeString = "off";
+                        } else {
+                            vacationModeString = "on";
+                        }
+                        try {
+                            HeatingSystem.put("weekProgramState", vacationModeString);
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
                         }
