@@ -5,6 +5,9 @@
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">wednesday</string>
     <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
     <string name="switchtype">Switch type</string>
     <string name="timeofswitch">Switch time</string>
     <string name="night">Night</string>
