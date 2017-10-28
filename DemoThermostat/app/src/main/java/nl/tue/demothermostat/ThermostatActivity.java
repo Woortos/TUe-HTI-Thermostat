@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Switch;
 
 import org.thermostatapp.util.HeatingSystem;
 import org.thermostatapp.util.WeekProgram;
@@ -18,7 +19,7 @@ public class ThermostatActivity extends Activity {
     double vtemp = 22.0;
     double dayTemp = 22.0;
     double nightTemp = 16.0;
-    String overriddenTemp, tempCurrent, dayTempString, nightTempString;
+    String overriddenTemp, tempCurrent, dayTempString, nightTempString, vacationModeString;
     TextView currentTemp;
     TextView temp;
     TextView dayTempText;
@@ -41,12 +42,12 @@ public class ThermostatActivity extends Activity {
         ImageView nightPlus = (ImageView) findViewById(R.id.nightup);
         ImageView nightMinus = (ImageView) findViewById(R.id.nightdown);
 
+        final Switch vacationMode = (Switch) findViewById(R.id.vacationmode);
 
         currentTemp = (TextView) findViewById(R.id.currenttemp);
         temp = (TextView) findViewById(R.id.tempoverride);
         dayTempText = (TextView) findViewById(R.id.tempday);
         nightTempText = (TextView) findViewById(R.id.tempnight);
-
 
 
         //refresh current temperature
@@ -74,7 +75,7 @@ public class ThermostatActivity extends Activity {
         };
         handler.post(refresh);
 
-        //Upon starting the app, retrieve the correct temps from the server
+        //Upon starting the app, retrieve the correct temps/vacationMode from the server
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -82,6 +83,8 @@ public class ThermostatActivity extends Activity {
                 try {
                     dayTempString = HeatingSystem.get("dayTemperature");
                     nightTempString = HeatingSystem.get("nightTemperature");
+                    vacationModeString = HeatingSystem.get("weekProgramState");
+
                     // Get the week program
                     WeekProgram wpg = HeatingSystem.getWeekProgram();
                     // Set the week program to default
@@ -96,6 +99,12 @@ public class ThermostatActivity extends Activity {
                             dayTempText.setText(dayTempString + " \u2103");
                             nightTempText.setText(nightTempString + " \u2103");
                             temp.setText(dayTempString+ " \u2103");
+
+                            if (vacationModeString == "on"){
+                                vacationMode.setChecked(true);
+                            } else {
+                                vacationMode.setChecked(false);
+                            }
 
                         }
                     });

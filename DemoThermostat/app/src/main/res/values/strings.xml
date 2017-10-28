@@ -3,7 +3,14 @@
     <string name="temp">21</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
+    <string name="wednesday">wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="switchtype">Switch type</string>
+    <string name="timeofswitch">Switch time</string>
+    <string name="night">Night</string>
+    <string name="day">Day</string>
     <string name="timeindic">00:00</string>
     <string name="timeindic2">12:00</string>
     <string name="post">Post</string>
+    <string name="vacationmode">Vacation mode</string>
 </resources>
