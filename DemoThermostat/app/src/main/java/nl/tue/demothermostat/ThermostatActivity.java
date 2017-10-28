@@ -321,6 +321,13 @@ public class ThermostatActivity extends Activity {
                                     dayTempText.setText(dayTempString + " \u2103");
                                 }
                             });
+                            targetTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    targetTemp.setText(targetTempStr + " \u2103");
+                                }
+                            });
+
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
                         }
@@ -355,6 +362,13 @@ public class ThermostatActivity extends Activity {
                                     dayTempText.setText(dayTempString + " \u2103");
                                 }
                             });
+                            targetTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    targetTemp.setText(targetTempStr + " \u2103");
+                                }
+                            });
+
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
                         }
@@ -390,6 +404,13 @@ public class ThermostatActivity extends Activity {
                                     nightTempText.setText(nightTempString + " \u2103");
                                 }
                             });
+                            targetTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    targetTemp.setText(targetTempStr + " \u2103");
+                                }
+                            });
+
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
                         }
@@ -424,6 +445,13 @@ public class ThermostatActivity extends Activity {
                                     nightTempText.setText(nightTempString + " \u2103");
                                 }
                             });
+                            targetTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    targetTemp.setText(targetTempStr + " \u2103");
+                                }
+                            });
+
                         } catch (Exception e) {
                             System.err.println("Error from getdata " + e);
                         }
