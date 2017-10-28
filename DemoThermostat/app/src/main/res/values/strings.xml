@@ -2,6 +2,7 @@
     <string name="app_name">HTIThermostat2000</string>
     <string name="temp">21</string>
     <string name="goal">Goal</string>
+    <string name="current">Current temperature</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">wednesday</string>

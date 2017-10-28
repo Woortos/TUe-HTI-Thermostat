@@ -58,10 +58,10 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txtcurrent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Current"
+                android:text="@string/current"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 

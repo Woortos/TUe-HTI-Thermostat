@@ -63,10 +63,18 @@ public class ThermostatActivity extends Activity {
                     public void run() {
                         try {
                             tempCurrent = HeatingSystem.get("currentTemperature");
+                            targetTempStr = HeatingSystem.get("targetTemperature");
+                            vtemp = Double.parseDouble(targetTempStr);
                             currentTemp.post(new Runnable() {
                                 @Override
                                 public void run() {
                                     currentTemp.setText(tempCurrent + " \u2103");
+                                }
+                            });
+                            targetTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    targetTemp.setText(targetTempStr + " \u2103");
                                 }
                             });
                         } catch (Exception e) {
@@ -87,9 +95,11 @@ public class ThermostatActivity extends Activity {
                 try {
                     dayTempString = HeatingSystem.get("dayTemperature");
                     nightTempString = HeatingSystem.get("nightTemperature");
-                    targetTempStr = HeatingSystem.get("targetTemperature");
                     vacationModeString = HeatingSystem.get("weekProgramState");
-                    System.out.println(vacationModeString);
+
+                    dayTemp = Double.parseDouble(dayTempString);
+                    nightTemp = Double.parseDouble(nightTempString);
+
 
                     // Get the week program
                    /* WeekProgram wpg = HeatingSystem.getWeekProgram();
@@ -98,12 +108,6 @@ public class ThermostatActivity extends Activity {
                     //Upload the updated program
                     HeatingSystem.setWeekProgram(wpg);*/
 
-                    targetTemp.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            targetTemp.setText(targetTempStr+ " \u2103");
-                        }
-                    });
                     nightTempText.post(new Runnable() {
                         @Override
                         public void run() {
@@ -176,7 +180,6 @@ public class ThermostatActivity extends Activity {
                     public void run() {
                         try {
                                 HeatingSystem.put("targetTemperature", Double.toString(vtemp));
-                                targetTempStr = HeatingSystem.get("targetTemperature");
                                 targetTemp.post(new Runnable() {
                                     @Override
                                     public void run() {
