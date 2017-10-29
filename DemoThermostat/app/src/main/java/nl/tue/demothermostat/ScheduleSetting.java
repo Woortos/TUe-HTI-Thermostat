@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TimePicker;
 
 import org.thermostatapp.util.HeatingSystem;
 import org.thermostatapp.util.Switch;
@@ -17,10 +18,11 @@ import java.util.Map;
 
 public class ScheduleSetting extends Activity {
 
-    EditText setDay, startTime;
-    Button postSwitch;
-    String day, start, type;
+    EditText setDay, startTime, removedayText, removetimeText;
+    Button postSwitch, removebutton;
+    String day, start, removedayString, removetimeString;
     RadioButton dayOn, nightOn;
+    TimePicker timePicker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +31,21 @@ public class ScheduleSetting extends Activity {
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/3";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
-        setDay= (EditText) findViewById(R.id.setday);
+        removedayText = (EditText) findViewById(R.id.removeday);
+        removetimeText = (EditText) findViewById(R.id.removetime);
+        setDay = (EditText) findViewById(R.id.setday);
         startTime = (EditText) findViewById(R.id.starttime);
         dayOn = (RadioButton) findViewById(R.id.radiobuttonday);
         nightOn = (RadioButton) findViewById(R.id.radiobuttonnight);
 
 
         postSwitch = (Button)findViewById(R.id.postswitch);
+        removebutton = (Button) findViewById(R.id.removebutton);
+        timePicker = (TimePicker) findViewById(R.id.timePicker);
 
+        timePicker.setIs24HourView(true);
 
-         postSwitch.setOnClickListener(new View.OnClickListener() {
+        postSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -48,7 +55,7 @@ public class ScheduleSetting extends Activity {
                     public void run() {
                         try {
                             day = setDay.getText().toString();
-                            start = startTime.getText().toString();
+                            start = (timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             boolean isDay = dayOn.isChecked();
                             boolean isNight = nightOn.isChecked();
@@ -73,9 +80,6 @@ public class ScheduleSetting extends Activity {
 
                                     }
                                 }
-                            } else {
-                                View b = findViewById(R.id.setday);
-                                b.setVisibility(View.INVISIBLE);
                             }
 
 
@@ -90,6 +94,37 @@ public class ScheduleSetting extends Activity {
 
             }
         });
+
+        removebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            WeekProgram wpg = HeatingSystem.getWeekProgram();
+                            removedayString = removedayText.getText().toString();
+                            removetimeString = removetimeText.getText().toString();
+                            for (int i = 0; i <= 9 ;i++ ) {
+                                    if (wpg.data.get(removedayString).get(i).getTime().equals(removetimeString)) {
+                                        wpg.RemoveSwitch(i, removedayString);
+                                        break;
+                                    }
+                            }
+
+
+                            HeatingSystem.setWeekProgram(wpg);
+
+                        } catch (Exception e) {
+                            System.err.println("Error from getdata " + e);
+                        }
+                    }
+                }).start();
+
+            }
+        });
+
 
     }
 }

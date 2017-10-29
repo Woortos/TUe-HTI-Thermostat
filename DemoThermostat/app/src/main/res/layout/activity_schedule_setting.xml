@@ -25,52 +25,49 @@
                 android:hint="Day" />
         </RelativeLayout>
 
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="horizontal">
 
-            <RadioGroup
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radiobuttonnight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:text="@string/night" />
 
-                <RadioButton
-                    android:id="@+id/radiobuttonnight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/night" />
+            <RadioButton
+                android:id="@+id/radiobuttonday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/day" />
+        </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/radiobuttonday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/day" />
-            </RadioGroup>
+    </LinearLayout>
 
-        </LinearLayout>
-
-        <RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-            <EditText
-                android:id="@+id/starttime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:hint="Start time"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
 
-        </RelativeLayout>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/postswitch"
@@ -79,6 +76,39 @@
         android:layout_weight="1"
         android:text="@string/post"
         android:textSize="30sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/removetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/removeday"
+            android:ems="10"
+            android:hint="time of switch"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/removeday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Day"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/removebutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            android:layout_below="@+id/removetime"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </LinearLayout>
 
