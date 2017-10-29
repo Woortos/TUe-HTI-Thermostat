@@ -97,7 +97,7 @@ public class WeekProgram {
         return duplicatesFound;
     }
 
-/*
+
     public void check_duplicates(ArrayList<Switch> new_switches) {
         for (int i = 0; i < new_switches.size() - 1; i++) {
             if (new_switches.get(i).getState()
@@ -117,7 +117,7 @@ public class WeekProgram {
                 }
         }
     }
-*/
+
     public void set_durations() {
         for (int i = 0; i < this.valid_days.length; i++) {
 
@@ -166,7 +166,7 @@ public class WeekProgram {
         set_durations();
     }
 
-/*
+
 
     public int get_nr_switches_active(int i) {
         return this.nr_switches_active[i];
@@ -284,5 +284,5 @@ public class WeekProgram {
 
         return hours + ":" + mins;
     }
-*/
+
 }
