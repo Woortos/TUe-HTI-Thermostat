@@ -344,7 +344,7 @@ public class ThermostatActivity extends Activity {
                     b.setVisibility(View.VISIBLE);
                     View c = findViewById(R.id.daydown);
                     c.setVisibility(View.VISIBLE);
-                    dayTemp = dayTemp - 0.1d;
+                    dayTemp = dayTemp - 0.1;
                 } else {
                     View b = findViewById(R.id.daydown);
                     b.setVisibility(View.INVISIBLE);
@@ -386,7 +386,7 @@ public class ThermostatActivity extends Activity {
                     b.setVisibility(View.VISIBLE);
                     View c = findViewById(R.id.nightdown);
                     c.setVisibility(View.VISIBLE);
-                    nightTemp = nightTemp + 0.1d;
+                    nightTemp = nightTemp + 0.1;
                 } else {
                     View b = findViewById(R.id.nightup);
                     b.setVisibility(View.INVISIBLE);
@@ -427,7 +427,7 @@ public class ThermostatActivity extends Activity {
                     b.setVisibility(View.VISIBLE);
                     View c = findViewById(R.id.nightdown);
                     c.setVisibility(View.VISIBLE);
-                    nightTemp = nightTemp - 0.1d;
+                    nightTemp = nightTemp - 0.1;
                 } else {
                     View b = findViewById(R.id.nightdown);
                     b.setVisibility(View.INVISIBLE);

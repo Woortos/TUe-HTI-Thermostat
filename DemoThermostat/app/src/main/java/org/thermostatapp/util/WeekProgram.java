@@ -158,14 +158,15 @@ public class WeekProgram {
         for (String d : this.valid_days) {
             if (d.equalsIgnoreCase(day)) {
                 this.data.put(d, switches_list);
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 7; i++){
                     if (day.equalsIgnoreCase(WeekProgram.valid_days[i]))
                         this.nr_switches_active[i] = nr_switches;
+                }
+
             }
         }
         set_durations();
     }
-
 
 
     public int get_nr_switches_active(int i) {

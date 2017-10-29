@@ -4,44 +4,45 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import org.thermostatapp.util.HeatingSystem;
+import org.thermostatapp.util.Switch;
 import org.thermostatapp.util.WeekProgram;
+
+import java.util.HashMap;
 
 
 public class WeekOverview extends Activity {
+
+    WeekProgram wpg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.week_overview);
 
- /*       new Thread(new Runnable() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
-
                 try {
-                    dayTempString = "";
-                    nightTempString = HeatingSystem.get("nightTemperature");
                     // Get the week program
-                    WeekProgram wpg = HeatingSystem.getWeekProgram();
-                    // Set the week program to default
-                    wpg.setDefault();
-                    //Upload the updated program
-                    HeatingSystem.setWeekProgram(wpg);
-                    dayTempText.post(new Runnable() {
-
-                        @Override
-                        public void run() {
-
-                            dayTempText.setText(dayTempString + " \u2103");
-                            nightTempText.setText(nightTempString + " \u2103");
-                            temp.setText(dayTempString+ " \u2103");
-
-                        }
-                    });
+                    wpg = HeatingSystem.getWeekProgram();
+                    /*for (HashMap<String, String> map : wpg.get())
+                        for (Entry<String, String> mapEntry : map.entrySet())
+                        {
+                            String key = mapEntry.getKey();
+                            String value = mapEntry.getValue();
+                        }*/
+                    System.out.println(wpg.data.get("Monday").get(1));
+                    wpg.data.get("Tuesday");
+                    wpg.data.get("Wednesday");
+                    wpg.data.get("Thursday");
+                    wpg.data.get("Friday");
+                    wpg.data.get("Saturday");
+                    wpg.data.get("Sunday");
                 } catch (Exception e) {
                     System.err.println("Error from getdata " + e);
                 }
             }
         }).start();
-*/
+
     }
 }

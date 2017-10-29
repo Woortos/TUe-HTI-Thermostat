@@ -150,7 +150,7 @@ public class HeatingSystem {
      *            = { "day", "time", "currentTemperature", "dayTemperature",
      *            "nightTemperature", "weekProgramState" }; Note that
      *            "weekProgram" has not been included, because it has a more
-     *            complex value than a single value. Therefore the funciton
+     *            complex value than a single value. Therefore the function
      *            getWeekProgram() is implemented which return a WeekProgram
      *            object that can be easily altered.
      */

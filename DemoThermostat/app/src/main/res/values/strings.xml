@@ -12,6 +12,8 @@
     <string name="sunday">Sunday</string>
     <string name="switchtype">Switch type</string>
     <string name="timeofswitch">Switch time</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
     <string name="night">Night</string>
     <string name="day">Day</string>
     <string name="timeindic">00:00</string>
