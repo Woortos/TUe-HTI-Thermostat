@@ -33,12 +33,12 @@ public class WeekProgram {
             String day = this.valid_days[i];
             this.data.put(day, new ArrayList<Switch>());
             this.data.get(day).add(new Switch("night", false, "00:00"));
-            this.data.get(day).add(new Switch("night", false, "09:00"));
-            this.data.get(day).add(new Switch("night", false, "22:00"));
             this.data.get(day).add(new Switch("night", false, "00:00"));
             this.data.get(day).add(new Switch("night", false, "00:00"));
-            this.data.get(day).add(new Switch("day", false, "06:00"));
-            this.data.get(day).add(new Switch("day", false, "14:30"));
+            this.data.get(day).add(new Switch("night", false, "00:00"));
+            this.data.get(day).add(new Switch("night", false, "00:00"));
+            this.data.get(day).add(new Switch("day", false, "00:00"));
+            this.data.get(day).add(new Switch("day", false, "00:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
@@ -267,10 +267,10 @@ public class WeekProgram {
         if (data.get(day).get(data.get(day).size() - 2).getType()
                 .equalsIgnoreCase("day"))
             data.get(day).set(data.get(day).size() - 1,
-                    new Switch("night", false, "23:00"));
+                    new Switch("day", false, "00:00"));
         else
             data.get(day).set(data.get(day).size() - 1,
-                    new Switch("day", false, "23:00"));
+                    new Switch("night", false, "00:00"));
         check_duplicates(data.get(day));
         set_durations();
     }

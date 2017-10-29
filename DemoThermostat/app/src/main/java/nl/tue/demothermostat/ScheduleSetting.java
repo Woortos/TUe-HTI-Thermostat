@@ -124,6 +124,7 @@ public class ScheduleSetting extends Activity {
                             for (int i = 0; i <= 9 ;i++ ) {
                                     if (wpg.data.get(removedayString).get(i).getTime().equals(removetimeString)) {
                                         wpg.RemoveSwitch(i, removedayString);
+                                        System.out.println("switch removed " + i + " " + removedayString);
                                         break;
                                     }
                             }
