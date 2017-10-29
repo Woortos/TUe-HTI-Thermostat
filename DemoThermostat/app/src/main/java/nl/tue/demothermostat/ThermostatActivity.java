@@ -44,7 +44,7 @@ public class ThermostatActivity extends Activity {
         ImageView dayPlus = (ImageView) findViewById(R.id.dayup);
         ImageView dayMinus = (ImageView) findViewById(R.id.daydown);
         ImageView nightPlus = (ImageView) findViewById(R.id.nightup);
-        ImageView nightMinus = (ImageView) findViewById(R.id.nightdown);
+        final ImageView nightMinus = (ImageView) findViewById(R.id.nightdown);
 
         vacationMode = (Switch) findViewById(R.id.vacationmode);
 
@@ -303,7 +303,7 @@ public class ThermostatActivity extends Activity {
                     b.setVisibility(View.VISIBLE);
                     View c = findViewById(R.id.daydown);
                     c.setVisibility(View.VISIBLE);
-                    dayTemp++;
+                    dayTemp = dayTemp + 0.1;
                 } else {
                     View b = findViewById(R.id.dayup);
                     b.setVisibility(View.INVISIBLE);
@@ -344,7 +344,7 @@ public class ThermostatActivity extends Activity {
                     b.setVisibility(View.VISIBLE);
                     View c = findViewById(R.id.daydown);
                     c.setVisibility(View.VISIBLE);
-                    dayTemp--;
+                    dayTemp = dayTemp - 0.1d;
                 } else {
                     View b = findViewById(R.id.daydown);
                     b.setVisibility(View.INVISIBLE);
@@ -386,7 +386,7 @@ public class ThermostatActivity extends Activity {
                     b.setVisibility(View.VISIBLE);
                     View c = findViewById(R.id.nightdown);
                     c.setVisibility(View.VISIBLE);
-                    nightTemp++;
+                    nightTemp = nightTemp + 0.1d;
                 } else {
                     View b = findViewById(R.id.nightup);
                     b.setVisibility(View.INVISIBLE);
@@ -427,7 +427,7 @@ public class ThermostatActivity extends Activity {
                     b.setVisibility(View.VISIBLE);
                     View c = findViewById(R.id.nightdown);
                     c.setVisibility(View.VISIBLE);
-                    nightTemp--;
+                    nightTemp = nightTemp - 0.1d;
                 } else {
                     View b = findViewById(R.id.nightdown);
                     b.setVisibility(View.INVISIBLE);
