@@ -228,7 +228,6 @@
                     android:layout_weight="1"
                     android:text="@string/switchtype"
                     android:textSize="12sp"
-                    android:textStyle="bold"
                     android:textStyle="bold" />
 
                 <TextView
@@ -238,7 +237,6 @@
                     android:layout_weight="1"
                     android:text="@string/timeofswitch"
                     android:textSize="12sp"
-                    android:textStyle="bold"
                     android:textStyle="bold" />
             </TableRow>
 
