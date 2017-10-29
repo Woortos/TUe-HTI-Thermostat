@@ -21,10 +21,7 @@ public class ThermostatActivity extends Activity {
     double dayTemp = 22.0;
     double nightTemp = 16.0;
     String targetTempStr, tempCurrent, dayTempString, nightTempString,  vacationModeString;
-    TextView currentTemp;
-    TextView targetTemp;
-    TextView dayTempText;
-    TextView nightTempText;
+    TextView currentTemp, targetTemp, dayTempText, nightTempText;
     Switch vacationMode;
     Handler handler = new Handler();
     Runnable refresh;
