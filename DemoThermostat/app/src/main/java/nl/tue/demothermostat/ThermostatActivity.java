@@ -102,11 +102,11 @@ public class ThermostatActivity extends Activity {
 
 
                     // Get the week program
-                   /* WeekProgram wpg = HeatingSystem.getWeekProgram();
+                    WeekProgram wpg = HeatingSystem.getWeekProgram();
                     // Set the week program to default
                     wpg.setDefault();
                     //Upload the updated program
-                    HeatingSystem.setWeekProgram(wpg);*/
+                    HeatingSystem.setWeekProgram(wpg);
 
                     nightTempText.post(new Runnable() {
                         @Override
