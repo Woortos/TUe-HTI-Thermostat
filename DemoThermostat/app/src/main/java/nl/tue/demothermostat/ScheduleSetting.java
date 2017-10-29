@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class ScheduleSetting extends Activity {
 
-    EditText setDay, startTime, removedayText, removetimeText;
+    EditText setDay, removedayText, removetimeText;
     Button postSwitch, removebutton;
     String day, start, removedayString, removetimeString;
     RadioButton dayOn, nightOn;
@@ -54,7 +54,24 @@ public class ScheduleSetting extends Activity {
                     public void run() {
                         try {
                             day = setDay.getText().toString();
-                            start = (timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
+                            if(timePicker.getCurrentHour() < 10 ){
+                                start = ("0" + timePicker.getCurrentHour() + ":" );
+                                if(timePicker.getCurrentHour() < 1 ){
+                                    start = ("0" + start);
+                                }
+
+                            } else {
+                                start = timePicker.getCurrentHour() + ":";
+                            }
+                            if (timePicker.getCurrentMinute() < 10){
+                                start = start + "0" + timePicker.getCurrentMinute();
+                                if (timePicker.getCurrentMinute() < 1){
+                                    start = start + "0";
+                                }
+                            } else {
+                                start = start + timePicker.getCurrentMinute();
+                            }
+                            System.out.println(start);
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             boolean isDay = dayOn.isChecked();
                             boolean isNight = nightOn.isChecked();
@@ -64,7 +81,6 @@ public class ScheduleSetting extends Activity {
                                 for (int i = 5; i <= 9; i++) {
                                     boolean state = wpg.data.get(day).get(i).getState();
                                     if(!state) {
-
                                         wpg.data.get(day).set(i, new Switch("day", true, start));
                                         break;
                                     }
