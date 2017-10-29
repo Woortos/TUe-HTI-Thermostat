@@ -56,16 +56,21 @@ public class ScheduleSetting extends Activity {
 
                             if (isDay) {
                                 for (int i = 5; i <= 9; i++) {
-                                    if(!wpg.data.get(day).get(i).getState()) {
-                                        wpg.data.get(day).set(i, new Switch(type, true, start));
+                                    boolean state = wpg.data.get(day).get(i).getState();
+                                    if(!state) {
+
+                                        wpg.data.get(day).set(i, new Switch("day", true, start));
                                         break;
                                     }
                                 }
                             } else if (isNight) {
                                 for (int i = 0; i <= 4; i++) {
-                                    if(!wpg.data.get(day).get(i).getState()) {
-                                        wpg.data.get(day).set(i, new Switch(type, true, start));
+                                    boolean state = wpg.data.get(day).get(i).getState();
+                                    if(!state) {
+                                        wpg.data.get(day).set(i, new Switch("night", true, start));
                                         break;
+                                    } else {
+
                                     }
                                 }
                             } else {
