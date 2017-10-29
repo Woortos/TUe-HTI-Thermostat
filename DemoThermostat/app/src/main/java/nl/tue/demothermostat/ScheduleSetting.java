@@ -34,7 +34,6 @@ public class ScheduleSetting extends Activity {
         removedayText = (EditText) findViewById(R.id.removeday);
         removetimeText = (EditText) findViewById(R.id.removetime);
         setDay = (EditText) findViewById(R.id.setday);
-        startTime = (EditText) findViewById(R.id.starttime);
         dayOn = (RadioButton) findViewById(R.id.radiobuttonday);
         nightOn = (RadioButton) findViewById(R.id.radiobuttonnight);
 
