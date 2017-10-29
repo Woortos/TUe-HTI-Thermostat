@@ -47,7 +47,6 @@ public class ScheduleSetting extends Activity {
 
                     public void run() {
                         try {
-                            System.out.println("ScheduleSetting.run");
                             day = setDay.getText().toString();
                             start = startTime.getText().toString();
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
@@ -59,14 +58,19 @@ public class ScheduleSetting extends Activity {
                                 for (int i = 5; i <= 9; i++) {
                                     if(!wpg.data.get(day).get(i).getState()) {
                                         wpg.data.get(day).set(i, new Switch(type, true, start));
+                                        break;
                                     }
                                 }
                             } else if (isNight) {
                                 for (int i = 0; i <= 4; i++) {
                                     if(!wpg.data.get(day).get(i).getState()) {
                                         wpg.data.get(day).set(i, new Switch(type, true, start));
+                                        break;
                                     }
                                 }
+                            } else {
+                                View b = findViewById(R.id.setday);
+                                b.setVisibility(View.INVISIBLE);
                             }
 
 
