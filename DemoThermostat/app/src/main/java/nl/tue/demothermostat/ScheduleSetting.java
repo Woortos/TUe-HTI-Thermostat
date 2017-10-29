@@ -17,11 +17,10 @@ import java.util.Map;
 
 public class ScheduleSetting extends Activity {
 
-    EditText setDay, startTime, endTime;
+    EditText setDay, startTime;
     Button postSwitch;
-    String day, start, end, type;
+    String day, start, type;
     RadioButton dayOn, nightOn;
-    int startInt, endInt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +31,6 @@ public class ScheduleSetting extends Activity {
 
         setDay= (EditText) findViewById(R.id.setday);
         startTime = (EditText) findViewById(R.id.starttime);
-        endTime= (EditText) findViewById(R.id.endtime);
         dayOn = (RadioButton) findViewById(R.id.radiobuttonday);
         nightOn = (RadioButton) findViewById(R.id.radiobuttonnight);
 
@@ -49,17 +47,28 @@ public class ScheduleSetting extends Activity {
 
                     public void run() {
                         try {
+                            System.out.println("ScheduleSetting.run");
                             day = setDay.getText().toString();
                             start = startTime.getText().toString();
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             boolean isDay = dayOn.isChecked();
                             boolean isNight = nightOn.isChecked();
 
-                                if (isDay) {
-                                    wpg.data.get(day).set(5, new Switch(type, true, start));
-                                } else if (isNight) {
-                                    wpg.data.get(day).set(5, new Switch(type, true, start));
+
+                            if (isDay) {
+                                for (int i = 5; i <= 9; i++) {
+                                    if(!wpg.data.get(day).get(i).getState()) {
+                                        wpg.data.get(day).set(i, new Switch(type, true, start));
+                                    }
                                 }
+                            } else if (isNight) {
+                                for (int i = 0; i <= 4; i++) {
+                                    if(!wpg.data.get(day).get(i).getState()) {
+                                        wpg.data.get(day).set(i, new Switch(type, true, start));
+                                    }
+                                }
+                            }
+
 
 
                             HeatingSystem.setWeekProgram(wpg);
