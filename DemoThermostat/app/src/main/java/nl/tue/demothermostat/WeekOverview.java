@@ -156,8 +156,9 @@ public class WeekOverview extends Activity {
                             // setting styling of the rows and text
                             final TableRow.LayoutParams  params1=new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT,1f);
                             final TableRow.LayoutParams params2=new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
-
-                            final TableLayout tbl=(TableLayout) findViewById(R.id.tablemon);
+                            System.out.println(swtch.getTime());
+                            System.out.println(swtch.getType());
+                            final TableLayout tbl=(TableLayout) findViewById(R.id.tablesat);
                             //Creating new tablerows and textviews
                             TableRow row= new TableRow(WeekOverview.this);
                             TextView txt1= new TextView(WeekOverview.this);
