@@ -56,18 +56,12 @@ public class ScheduleSetting extends Activity {
                             day = setDay.getText().toString();
                             if(timePicker.getCurrentHour() < 10 ){
                                 start = ("0" + timePicker.getCurrentHour() + ":" );
-                                if(timePicker.getCurrentHour() < 1 ){
-                                    start = ("0" + start);
-                                }
-
                             } else {
                                 start = timePicker.getCurrentHour() + ":";
                             }
                             if (timePicker.getCurrentMinute() < 10){
                                 start = start + "0" + timePicker.getCurrentMinute();
-                                if (timePicker.getCurrentMinute() < 1){
-                                    start = start + "0";
-                                }
+                                
                             } else {
                                 start = start + timePicker.getCurrentMinute();
                             }
@@ -121,7 +115,7 @@ public class ScheduleSetting extends Activity {
                             WeekProgram wpg = HeatingSystem.getWeekProgram();
                             removedayString = removedayText.getText().toString();
                             removetimeString = removetimeText.getText().toString();
-                            for (int i = 0; i <= 9 ;i++ ) {
+                            for (int i = 0; i <= 10 ;i++ ) {
                                     if (wpg.data.get(removedayString).get(i).getTime().equals(removetimeString)) {
                                         wpg.RemoveSwitch(i, removedayString);
                                         System.out.println("switch removed " + i + " " + removedayString);

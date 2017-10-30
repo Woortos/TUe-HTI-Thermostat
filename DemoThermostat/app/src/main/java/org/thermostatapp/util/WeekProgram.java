@@ -37,7 +37,7 @@ public class WeekProgram {
             this.data.get(day).add(new Switch("night", false, "00:00"));
             this.data.get(day).add(new Switch("night", false, "00:00"));
             this.data.get(day).add(new Switch("night", false, "00:00"));
-            this.data.get(day).add(new Switch("day", false, "00:00"));
+            this.data.get(day).add(new Switch("day", true, "12:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
             this.data.get(day).add(new Switch("day", false, "00:00"));
@@ -267,10 +267,10 @@ public class WeekProgram {
         if (data.get(day).get(data.get(day).size() - 2).getType()
                 .equalsIgnoreCase("day"))
             data.get(day).set(data.get(day).size() - 1,
-                    new Switch("day", false, "00:00"));
+                    new Switch("night", false, "00:00"));
         else
             data.get(day).set(data.get(day).size() - 1,
-                    new Switch("night", false, "00:00"));
+                    new Switch("day", false, "00:00"));
         check_duplicates(data.get(day));
         set_durations();
     }
